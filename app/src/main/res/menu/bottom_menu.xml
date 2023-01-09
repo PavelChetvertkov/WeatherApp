@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemSavedList"
+        android:icon="@drawable/ic_saved_list"
+        android:orderInCategory="0"
+        android:title="@string/saved_list" />
+    <item
+        android:id="@+id/itemMyLocation"
+        android:icon="@drawable/ic_my_location"
+        android:orderInCategory="1"
+        android:title="@string/my_location" />
+    <item
+        android:id="@+id/itemHireMe"
+        android:icon="@drawable/ic_hire_me"
+        android:orderInCategory="2"
+        android:title="@string/hire_me" />
+</menu>

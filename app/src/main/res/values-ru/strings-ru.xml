@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Погода Четвертков Павел</string>
+    <string name="return_to_app">Вернуться в приложение</string>
+    <string name="place">Moscow</string>
+    <string name="get_weather">Показать погоду</string>
+    <string name="get_coordinates">Получить координаты</string>
+    <string name="saved_list">Список мест</string>
+    <string name="my_location">Моя локация</string>
+    <string name="hire_me">Возьмите Павла на работу :)</string>
+    <string name="weather_in_the_selected_lovation">Погода в выбранном месте</string>
+    <string name="temperature">Температура</string>
+    <string name="feels_like">Ощущается как</string>
+    <string name="wind_speed">Скорость ветра</string>
+    <string name="gust">Порывы до</string>
+    <string name="last_updated">Обновлена информация</string>
+    <string name="kmh">км/ч</string>
+    <string name="celsius_degree">°C</string>
+</resources>

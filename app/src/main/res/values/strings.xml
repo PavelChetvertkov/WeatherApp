@@ -1,13 +1,18 @@
 <resources>
     <string name="app_name">PavelWeatherApp</string>
-    <string name="get_weather">Show the weather</string>
-    <string name="place">Moscow</string>
-    <string name="textview">Hire me</string>
     <string name="return_to_app">Return to the app</string>
-    <string name="saved_list">Saved list</string>
-    <string name="my_location">My location</string>
-    <string name="hire_me">Hire me</string>
+    <string name="place">Moscow</string>
+    <string name="get_weather">Show the weather</string>
     <string name="get_coordinates">Get coordinates</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="saved_list">Saved places</string>
+    <string name="my_location">My location</string>
+    <string name="hire_me">Hire Pavel :)</string>
+    <string name="weather_in_the_selected_lovation">Weather in the selected location</string>
+    <string name="temperature">Temperature</string>
+    <string name="feels_like">Feels like</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="gust">Gust</string>
+    <string name="last_updated">Updated</string>
+    <string name="kmh">km/h</string>
+    <string name="celsius_degree">°C</string>
 </resources>

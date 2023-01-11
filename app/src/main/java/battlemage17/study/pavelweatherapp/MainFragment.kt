@@ -18,13 +18,13 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModelWeather.message.observe(viewLifecycleOwner) {
-            binding.textViewWeather.text = "Weather in the selected location\n" +
+            binding.textViewWeather.text = "${getString(R.string.weather_in_the_selected_lovation)}:\n" +
                     "${it.textWeather}\n" +
-                    "Temperature: ${it.tempC} °C\n" +
-                    "Feels like: ${it.feelsLikeC} °C\n" +
-                    "Wind speed: ${it.windKph} km/h\n" +
-                    "Gust: ${it.gustKph} km/h\n" +
-                    "Updated: ${it.lastUpdated}"
+                    "${getString(R.string.temperature)}: ${it.tempC} ${getString(R.string.celsius_degree)}\n" +
+                    "${getString(R.string.feels_like)}: ${it.feelsLikeC} ${getString(R.string.celsius_degree)}\n" +
+                    "${getString(R.string.wind_speed)}: ${it.windKph} ${getString(R.string.kmh)}\n" +
+                    "${getString(R.string.gust)}: ${it.gustKph} ${getString(R.string.kmh)}\n" +
+                    "${getString(R.string.last_updated)}: ${it.lastUpdated}"
 
             Picasso.get()
                 .load(it.iconWeather)

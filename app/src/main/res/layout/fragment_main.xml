@@ -6,62 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/editTextPlace"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:inputType="text"
-            android:text="@string/place"
-            tools:ignore="LabelFor" />
-
-        <Button
-            android:id="@+id/b_get_weather"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="@string/get_weather"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/bGetCoodinates"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/get_coordinates"
-            tools:layout_editor_absoluteX="294dp"
-            tools:layout_editor_absoluteY="55dp" />
-    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageWeatherIcon"
-        android:layout_width="0dp"
+        android:id="@+id/ivMainPicture"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
+        android:src="@drawable/start_picture_360_640"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-1dp" />
+
+    <Button
+        android:id="@+id/bGetWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/get_weather"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <EditText
+        android:id="@+id/editTextPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:inputType="text"
+        android:text="@string/place"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/bGetWeather"
+        app:layout_constraintEnd_toStartOf="@+id/bGetWeather"
+        app:layout_constraintHorizontal_bias="0.787"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bGetWeather"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="LabelFor"
+        tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/textViewWeather"
+        android:id="@+id/tvCurrentWeather"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPlace"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/ivSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPlace"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPlace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextPlace" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Weather Chetvertkov</string>
     <string name="return_to_app">Return to the app</string>
-    <string name="place">Moscow</string>
     <string name="city_hint">Enter your city</string>
     <string name="get_weather">Show the weather</string>
     <string name="get_coordinates">Get coordinates</string>
-    <string name="saved_list">Saved places</string>
+    <string name="find_city">Find city</string>
     <string name="my_location">My location</string>
     <string name="hire_me">Hire me</string>
     <string name="weather_in_the_selected_lovation">Weather in the selected location</string>
@@ -16,5 +15,6 @@
     <string name="last_updated">Updated</string>
     <string name="kmh">km/h</string>
     <string name="celsius_degree">°C</string>
-    <string name="used_technologies">This technologies were used in the app:\nDagger 2\nRxJava 2\nRetrofit 2\nJSONObject\nViewModel\nTranslation to the other languages</string>
+    <string name="enter_city">°Enter city</string>
+    <string name="used_technologies">This technologies were used in the app:\nDagger 2\nRxJava 2\nRetrofit 2\nJSON object\nViewModel\nTranslation to the other languages</string>
 </resources>

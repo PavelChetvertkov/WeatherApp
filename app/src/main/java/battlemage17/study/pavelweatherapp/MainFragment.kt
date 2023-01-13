@@ -26,7 +26,7 @@ class MainFragment : Fragment() {
                         "${getString(R.string.gust)}: ${it.gustKph} ${getString(R.string.kmh)}\n" +
                         "${getString(R.string.last_updated)}: ${it.lastUpdated}"
             when (it.textWeather) {
-                //потом засунуть все это в строки (untranslatable)
+                //check all the options on the website and put them in the constant class
                 "Clear" -> binding.ivMainPicture.setImageResource(R.drawable.sunset_clear_sky)
                 "Overcast" -> binding.ivMainPicture.setImageResource(R.drawable.sunset_clouds)
                 else -> binding.ivMainPicture.setImageResource(R.drawable.night_snowfall)
@@ -34,36 +34,9 @@ class MainFragment : Fragment() {
         }
 
         binding.bGetWeather.setOnClickListener {
-            viewModelWeather.getResult(binding.editTextPlace.text.toString())
+            viewModelWeather.getResult(binding.svEnterPlace.query.toString())
         }
-        binding.bnvNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.itemSavedList -> {
-                    //Toast.makeText(this,"Здесь будет список городов", Toast.LENGTH_SHORT).show()
-                }
-                R.id.itemMyLocation -> {
-                    //Toast.makeText(this,"По нажатию на эту кнопку будет запрос на разрешение использования локации пользователя", Toast.LENGTH_SHORT).show()
-                }
-                R.id.itemHireMe -> {
-                    /*supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.placeHolder, FragmentAuthor.newInstance())
-                        .commit()*/
-                }
-            }
-            true
-        }
-
-        /*binding.bGetCoordinates.setOnClickListener {
-             // coordinates.getLatitudeLongitude()
-         }*/
     }
-
-    //закрыть, если нажата стрелка Назад
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) finish()
-        return true
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

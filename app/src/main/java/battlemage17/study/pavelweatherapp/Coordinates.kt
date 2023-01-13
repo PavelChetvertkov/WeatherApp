@@ -23,7 +23,6 @@ class Coordinates : AppCompatActivity() {
     private lateinit var locationRequest: LocationRequest
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
-    //получение разрешения
     private fun requestPermission() {
         //DEPRECATED
         /*ActivityCompat.requestPermissions(
@@ -55,7 +54,7 @@ class Coordinates : AppCompatActivity() {
         val cityName: String
         val geoCoder =
             Geocoder(this, Locale.getDefault())
-        //использую DEPRECATED, потому что альтернативный метод требует Android 13 (на нем только самые новые смартфоны)
+        //I have used here the deprecated method because the alternative method requires Android 13 (only the newest smartphones are on it)
         val address = geoCoder.getFromLocation(lat, long, 1)
         cityName = address!![0].locality
         return cityName
@@ -65,7 +64,7 @@ class Coordinates : AppCompatActivity() {
         val countryName: String
         val geoCoder =
             Geocoder(this, Locale.getDefault())
-        //использую DEPRECATED, потому что альтернативный метод требует Android 13 (на нем только самые новые смартфоны)
+        //I have used here the deprecated method because the alternative method requires Android 13 (only the newest smartphones are on it)
         val address = geoCoder.getFromLocation(lat, long, 1)
         countryName = address!![0].countryName
         return countryName
@@ -92,7 +91,7 @@ class Coordinates : AppCompatActivity() {
         }
     }
 
-    //проверка включены ли службы определения геолокации
+    //checking the inclusion of the geolocation detection service
     private fun isLocationEnabled(): Boolean {
         val locationManager: LocationManager =
             this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -100,7 +99,7 @@ class Coordinates : AppCompatActivity() {
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
 
-    //проверка результата разрешения
+    //checking the permission result
     //DEPRECATED
     /*override fun onRequestPermissionResult(
         requestCode: Int,
@@ -122,7 +121,7 @@ class Coordinates : AppCompatActivity() {
             Looper.myLooper())
     }*/
 
-    //проверка разрешения
+    //checking the permission
     private fun checkPermission(): Boolean {
         if (ActivityCompat.checkSelfPermission(
                 this,

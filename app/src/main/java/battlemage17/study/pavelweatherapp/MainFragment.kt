@@ -25,12 +25,17 @@ class MainFragment : Fragment() {
                         "${getString(R.string.wind_speed)}: ${it.windKph} ${getString(R.string.kmh)}\n" +
                         "${getString(R.string.gust)}: ${it.gustKph} ${getString(R.string.kmh)}\n" +
                         "${getString(R.string.last_updated)}: ${it.lastUpdated}"
-            when (it.textWeather) {
+
+            /*when (it.textWeather) {
                 //check all the options on the website and put them in the constant class
                 "Clear" -> binding.ivMainPicture.setImageResource(R.drawable.sunset_clear_sky)
                 "Overcast" -> binding.ivMainPicture.setImageResource(R.drawable.sunset_clouds)
                 else -> binding.ivMainPicture.setImageResource(R.drawable.night_snowfall)
-            }
+            }*/
+
+            //   //cdn.WeatherAPI.com/weather/64x64/day/116.png
+            //it.iconWeather
+            //binding.ivMainPicture.setImageResource(R.drawable.116.png)
         }
 
         binding.bGetWeather.setOnClickListener {
@@ -42,7 +47,8 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
+        //binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding = FragmentMainBinding.inflate(inflater)
         return binding.root
     }
 

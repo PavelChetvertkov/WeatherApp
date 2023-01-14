@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Погода Четвертков</string>
-    <string name="return_to_app">Вернуться в приложение</string>
+    <string name="app_name">Четвертков погода</string>
     <string name="city_hint">Введите город</string>
     <string name="get_weather">Показать погоду</string>
     <string name="get_coordinates">Получить координаты</string>

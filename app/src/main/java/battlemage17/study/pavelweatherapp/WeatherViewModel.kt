@@ -18,7 +18,7 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
 
     //fun getResult(place: String): DailyWeather {
     fun getResult(place: String) {
-        val url = "https://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$place&aqi=no"
+        val url = "https://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$place&days=1&aqi=no&alerts=no"
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)
         val stringRequest = StringRequest(
             Request.Method.GET,

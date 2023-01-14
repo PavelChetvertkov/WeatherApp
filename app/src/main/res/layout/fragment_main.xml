@@ -60,4 +60,12 @@
         app:layout_constraintTop_toBottomOf="@+id/bGetWeather"
         tools:ignore="ContentDescription" />
 
+    <WebView
+        android:id="@+id/wvIconWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="266dp"
+        tools:layout_editor_absoluteY="187dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

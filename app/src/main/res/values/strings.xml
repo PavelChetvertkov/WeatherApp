@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Weather Chetvertkov</string>
-    <string name="return_to_app">Return to the app</string>
+    <string name="app_name">Chetvertkov weather </string>
     <string name="city_hint">Enter your city</string>
     <string name="get_weather">Show the weather</string>
     <string name="get_coordinates">Get coordinates</string>

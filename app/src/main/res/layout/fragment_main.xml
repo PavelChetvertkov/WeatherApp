@@ -60,12 +60,16 @@
         app:layout_constraintTop_toBottomOf="@+id/bGetWeather"
         tools:ignore="ContentDescription" />
 
-    <WebView
-        android:id="@+id/wvIconWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="266dp"
-        tools:layout_editor_absoluteY="187dp"
-        tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/ivIconWeather"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bGetWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivMainPicture"
+        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

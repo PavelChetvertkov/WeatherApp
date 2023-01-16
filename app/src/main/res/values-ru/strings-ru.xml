@@ -15,5 +15,5 @@
     <string name="kmh">км/ч</string>
     <string name="celsius_degree">°C</string>
     <string name="enter_city">Введите город</string>
-    <string name="used_technologies">В приложении использовались следующие технологии и библиотеки:\nDagger 2\nRxJava 2\nRetrofit 2\nобъект JSON\nViewModel\nGlide\nПеревод на другие языки</string>
+    <string name="used_technologies">В приложении использовались следующие технологии и библиотеки:\nDagger 2\nRxJava 2\nRetrofit 2\nобъект и массив JSON\nViewModel\nGlide\nПеревод на другие языки</string>
 </resources>

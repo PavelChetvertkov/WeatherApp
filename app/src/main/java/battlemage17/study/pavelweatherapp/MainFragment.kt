@@ -14,14 +14,14 @@ import java.util.*
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val viewModelWeather: WeatherViewModel by activityViewModels()
-    private var translateCondition = ""
+    //private var translateCondition = ""
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModelWeather.message.observe(viewLifecycleOwner) {
-            translateCondition = it.textWeather
+            //translateCondition = it.textWeather
             binding.tvCurrentWeather.text =
                 "${getString(R.string.weather_in_the_selected_lovation)}:\n" +
                         "${it.textWeather}\n" +
@@ -30,6 +30,9 @@ class MainFragment : Fragment() {
                         "${getString(R.string.wind_speed)}: ${it.windKph} ${getString(R.string.kmh)}\n" +
                         "${getString(R.string.gust)}: ${it.gustKph} ${getString(R.string.kmh)}\n" +
                         "${getString(R.string.last_updated)}: ${it.lastUpdated}"
+
+            binding.tvTemperature.text =
+                "%.0f".format(it.tempC.toFloat()) + " " + getString(R.string.celsius_degree)
 
             Glide.with(this).clear(binding.ivIconWeather)
 
@@ -43,7 +46,7 @@ class MainFragment : Fragment() {
 
         binding.bGetWeather.setOnClickListener {
             viewModelWeather.getResult(binding.svEnterPlace.query.toString())
-            viewModelWeather.getTranslationCondition(translateCondition)
+            //viewModelWeather.getTranslationCondition(translateCondition)
         }
     }
 

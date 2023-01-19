@@ -72,4 +72,14 @@
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck"
         tools:src="@tools:sample/avatars" />
 
+    <TextView
+        android:id="@+id/tvTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/bGetWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivIconWeather" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

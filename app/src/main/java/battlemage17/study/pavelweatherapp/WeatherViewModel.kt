@@ -9,6 +9,8 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 import java.util.*
 
@@ -53,7 +55,12 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             { response ->
-                //read an JSON array
+                val jsonList = response.toString()
+                val arrayConditionsType = object : TypeToken<Array<Conditions>>() {}.type
+                //bug is here
+                val conditions: Array<Conditions> = Gson().fromJson(jsonList, arrayConditionsType)
+                Log.d("MyLog", "$conditions")
+
                 Log.d("MyLog", "Response: $response")
             },
             { error ->

@@ -14,14 +14,14 @@ import java.util.*
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private val viewModelWeather: WeatherViewModel by activityViewModels()
-    //private var translateCondition = ""
+    private var translateCondition = ""
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModelWeather.message.observe(viewLifecycleOwner) {
-            //translateCondition = it.textWeather
+            translateCondition = it.textWeather
             binding.tvCurrentWeather.text =
                 "${getString(R.string.weather_in_the_selected_lovation)}:\n" +
                         "${it.textWeather}\n" +
@@ -46,7 +46,8 @@ class MainFragment : Fragment() {
 
         binding.bGetWeather.setOnClickListener {
             viewModelWeather.getResult(binding.svEnterPlace.query.toString())
-            //viewModelWeather.getTranslationCondition(translateCondition)
+            viewModelWeather.getTranslationCondition(translateCondition)
+            //viewModelWeather.getResultRetroFit(binding.svEnterPlace.query.toString())
         }
     }
 

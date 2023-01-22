@@ -11,7 +11,12 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 import java.util.*
 
 private const val API_KEY = "b8690996b95c4beb877105434221212"
@@ -50,8 +55,20 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         //return DailyWeather (iconWeather, textWeather, lastUpdated, tempC, windKph, feelsLikeC, gustKph)
     }
 
+    @GET
     fun getResultRetroFit(place: String) {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$place&days=1&aqi=no&alerts=no")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     fun getTranslationCondition(translateCondition: String) {
@@ -59,13 +76,9 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             { response ->
-                val jsonList = response.toString()
-                val arrayConditionsType = object : TypeToken<Array<Conditions>>() {}.type
-                //bug is here
-                val conditions: Array<Conditions> = Gson().fromJson(jsonList, arrayConditionsType)
-                Log.d("MyLog", "$conditions")
-
                 Log.d("MyLog", "Response: $response")
+                val jsonList = response.toString()
+                Log.d("MyLog", "Step1")
             },
             { error ->
                 Log.d("MyLog", "Error: $error")

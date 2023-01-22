@@ -10,7 +10,6 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONObject
@@ -77,8 +76,11 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             { response ->
                 Log.d("MyLog", "Response: $response")
-                val jsonList = response.toString()
-                Log.d("MyLog", "Step1")
+                val conditions: Conditions =
+                    Gson().fromJson(response.toString(), Conditions::class.java)
+                Log.d("MyLog", conditions.toString())
+                //determine day or night by last_updated?
+                //search the item in conditions, where day or night equals to translateCondition and lang_iso equals to selectedLanguage. Print day_text or night_text
             },
             { error ->
                 Log.d("MyLog", "Error: $error")

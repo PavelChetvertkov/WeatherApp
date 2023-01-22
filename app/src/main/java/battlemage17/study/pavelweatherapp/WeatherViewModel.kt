@@ -50,6 +50,10 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         //return DailyWeather (iconWeather, textWeather, lastUpdated, tempC, windKph, feelsLikeC, gustKph)
     }
 
+    fun getResultRetroFit(place: String) {
+
+    }
+
     fun getTranslationCondition(translateCondition: String) {
         val url = "https://www.weatherapi.com/docs/conditions.json"
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)

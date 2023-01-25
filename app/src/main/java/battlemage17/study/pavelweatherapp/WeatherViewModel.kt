@@ -23,7 +23,7 @@ private const val API_KEY = "b8690996b95c4beb877105434221212"
 class WeatherViewModel(application: Application) : AndroidViewModel(application) {
     private val _message = MutableLiveData<DailyWeather>()
     val message: LiveData<DailyWeather> get() = _message
-
+    private var codeConditions = 0
     private val selectedLanguage = Locale.getDefault().language.toString()
 
     //fun getResult(place: String): DailyWeather {
@@ -33,6 +33,8 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)
         val stringRequest = StringRequest(Request.Method.GET, url, { response ->
             val obj = JSONObject(response)
+            codeConditions =
+                obj.getJSONObject("current").getJSONObject("condition").getString("code").toInt()
             val iconWeather =
                 obj.getJSONObject("current").getJSONObject("condition").getString("icon")
             val textWeather =
@@ -78,9 +80,29 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
                 Log.d("MyLog", "Response: $response")
                 val conditions: Conditions =
                     Gson().fromJson(response.toString(), Conditions::class.java)
-                Log.d("MyLog", conditions.toString())
+
+                var index1 = 0
+                var index2 = 0
+                var flag = false
+
+                for (i in 0 until conditions.size) {
+                    if (flag) break
+                    for (j in 0 until conditions[i].languages.size)
+                        if ((conditions[i].languages[j].langIso == selectedLanguage) && (conditions[i].code == codeConditions)) {
+                            flag = true
+                            index1 = i
+                            index2 = j
+                            break
+                        }
+                }
+
+                Log.d("MyLog", index1.toString())
+                Log.d("MyLog", index2.toString())
+
+                Log.d("MyLog", conditions[index1].languages[index2].nightText)
+
                 //determine day or night by last_updated?
-                //search the item in conditions, where day or night equals to translateCondition and lang_iso equals to selectedLanguage. Print day_text or night_text
+                //use translateCondition?
             },
             { error ->
                 Log.d("MyLog", "Error: $error")

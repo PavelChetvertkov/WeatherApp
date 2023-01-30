@@ -1,6 +1,5 @@
 package battlemage17.study.pavelweatherapp
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Language(

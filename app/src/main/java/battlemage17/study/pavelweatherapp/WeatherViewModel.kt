@@ -23,8 +23,19 @@ private const val API_KEY = "b8690996b95c4beb877105434221212"
 class WeatherViewModel(application: Application) : AndroidViewModel(application) {
     private val _message = MutableLiveData<DailyWeather>()
     val message: LiveData<DailyWeather> get() = _message
-    private var codeConditions = 0
+
     private val selectedLanguage = Locale.getDefault().language.toString()
+
+    private lateinit var obj: JSONObject
+    private var codeConditions = 0
+    private var iconWeather = ""
+    private var textWeather = ""
+    private var lastUpdated = ""
+    private var tempC = ""
+    private var windKph = ""
+    private var feelsLikeC = ""
+    private var gustKph = ""
+    private var isDay = ""
 
     //fun getResult(place: String): DailyWeather {
     fun getResult(place: String) {
@@ -32,25 +43,22 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
             "https://api.weatherapi.com/v1/current.json?key=$API_KEY&q=$place&days=1&aqi=no&alerts=no"
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)
         val stringRequest = StringRequest(Request.Method.GET, url, { response ->
-            val obj = JSONObject(response)
+            Log.d("MyLog", "Response main: $response")
+            obj = JSONObject(response)
             codeConditions =
                 obj.getJSONObject("current").getJSONObject("condition").getString("code").toInt()
-            val iconWeather =
+            iconWeather =
                 obj.getJSONObject("current").getJSONObject("condition").getString("icon")
-            val textWeather =
+            textWeather =
                 obj.getJSONObject("current").getJSONObject("condition").getString("text")
-            val lastUpdated = obj.getJSONObject("current").getString("last_updated")
-            val tempC = obj.getJSONObject("current").getString("temp_c")
-            val windKph = obj.getJSONObject("current").getString("wind_kph")
-            val feelsLikeC = obj.getJSONObject("current").getString("feelslike_c")
-            val gustKph = obj.getJSONObject("current").getString("gust_kph")
-
-            _message.value = DailyWeather(
-                iconWeather, textWeather, lastUpdated, tempC, windKph, feelsLikeC, gustKph
-            )
-            Log.d("MyLog", "Response: $response")
+            lastUpdated = obj.getJSONObject("current").getString("last_updated")
+            tempC = obj.getJSONObject("current").getString("temp_c")
+            windKph = obj.getJSONObject("current").getString("wind_kph")
+            feelsLikeC = obj.getJSONObject("current").getString("feelslike_c")
+            gustKph = obj.getJSONObject("current").getString("gust_kph")
+            isDay = obj.getJSONObject("current").getString("is_day")
         }, {
-            Log.d("MyLog", "Error: $it")
+            Log.d("MyLog", "Error main: $it")
         })
         queue.add(stringRequest)
         //return DailyWeather (iconWeather, textWeather, lastUpdated, tempC, windKph, feelsLikeC, gustKph)
@@ -72,12 +80,12 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
             .build()
     }
 
-    fun getTranslationCondition(translateCondition: String) {
+    fun getTranslationCondition() {
         val url = "https://www.weatherapi.com/docs/conditions.json"
         val queue = Volley.newRequestQueue(getApplication<Application?>().applicationContext)
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null,
             { response ->
-                Log.d("MyLog", "Response: $response")
+                Log.d("MyLog", "Response conditions: $response")
                 val conditions: Conditions =
                     Gson().fromJson(response.toString(), Conditions::class.java)
 
@@ -86,7 +94,6 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
                 var flag = false
 
                 for (i in 0 until conditions.size) {
-                    if (flag) break
                     for (j in 0 until conditions[i].languages.size)
                         if ((conditions[i].languages[j].langIso == selectedLanguage) && (conditions[i].code == codeConditions)) {
                             flag = true
@@ -94,18 +101,24 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
                             index2 = j
                             break
                         }
+                    if (flag) break
                 }
 
-                Log.d("MyLog", index1.toString())
-                Log.d("MyLog", index2.toString())
+                if (isDay == "0") textWeather = conditions[index1].languages[index2].nightText
+                if (isDay == "1") textWeather = conditions[index1].languages[index2].dayText
 
-                Log.d("MyLog", conditions[index1].languages[index2].nightText)
-
-                //determine day or night by last_updated?
-                //use translateCondition?
+                _message.value = DailyWeather(
+                    iconWeather,
+                    textWeather,
+                    lastUpdated,
+                    tempC,
+                    windKph,
+                    feelsLikeC,
+                    gustKph
+                )
             },
             { error ->
-                Log.d("MyLog", "Error: $error")
+                Log.d("MyLog", "Error conditions: $error")
             }
         )
         queue.add(jsonArrayRequest)

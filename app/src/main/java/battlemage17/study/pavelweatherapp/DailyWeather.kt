@@ -1,7 +1,7 @@
 package battlemage17.study.pavelweatherapp
 
 data class DailyWeather(
-    val iconWeather: String,
+    var iconWeather: String,
     val textWeather: String,
     val lastUpdated: String,
     val tempC: String,

@@ -11,64 +11,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/main_image_forest_hills_v2"
-        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <SearchView
-        android:id="@+id/svEnterPlace"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:queryHint="@string/find_city"
-        app:layout_constraintBottom_toBottomOf="@+id/bGetWeather"
-        app:layout_constraintTop_toTopOf="@+id/bGetWeather"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp" />
-
-    <TextView
-        android:id="@+id/tvCurrentWeather"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svEnterPlace"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/bGetWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="304dp"
-        android:layout_weight="1"
-        android:text="@string/get_weather"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/ivPlus"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/plus_icon_without_background"
+        app:layout_constraintBottom_toTopOf="@+id/bGetWeather"
         app:layout_constraintEnd_toEndOf="@+id/bGetWeather"
         app:layout_constraintStart_toStartOf="@+id/bGetWeather"
-        app:layout_constraintTop_toBottomOf="@+id/bGetWeather"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <SearchView
+        android:id="@+id/svEnterPlace"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:queryHint="@string/find_city"
+        app:layout_constraintBottom_toBottomOf="@+id/bGetWeather"
+        app:layout_constraintTop_toTopOf="@+id/bGetWeather"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="27dp" />
+
+    <Button
+        android:id="@+id/bGetWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="72dp"
+        android:layout_weight="1"
+        android:text="@string/get_weather"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/ivIconWeather"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/bGetWeather"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivMainPicture"
+        app:layout_constraintEnd_toEndOf="@+id/bGetWeather"
+        app:layout_constraintStart_toStartOf="@+id/svEnterPlace"
+        app:layout_constraintTop_toBottomOf="@+id/svEnterPlace"
         tools:ignore="ContentDescription,MissingConstraints,ImageContrastCheck"
         tools:src="@tools:sample/avatars" />
 
@@ -77,9 +71,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/bGetWeather"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivIconWeather" />
+        app:layout_constraintEnd_toEndOf="@+id/ivIconWeather"
+        app:layout_constraintStart_toStartOf="@+id/ivIconWeather"
+        app:layout_constraintTop_toBottomOf="@+id/ivIconWeather"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvFeelsLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tvTextWeather"
+        app:layout_constraintStart_toStartOf="@+id/tvTextWeather"
+        app:layout_constraintTop_toBottomOf="@+id/tvTextWeather"
+        tools:ignore="MissingConstraints,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvTextWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tvTemperature"
+        app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemperature"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tvFeelsLike"
+        app:layout_constraintStart_toStartOf="@+id/tvFeelsLike"
+        app:layout_constraintTop_toBottomOf="@+id/tvFeelsLike"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvGust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tvWindSpeed"
+        app:layout_constraintStart_toStartOf="@+id/tvWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/tvWindSpeed"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvLastUpdated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tvGust"
+        app:layout_constraintStart_toStartOf="@+id/tvGust"
+        app:layout_constraintTop_toBottomOf="@+id/tvGust"
+        tools:ignore="HardcodedText,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

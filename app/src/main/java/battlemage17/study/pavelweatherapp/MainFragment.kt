@@ -20,16 +20,22 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModelWeather.message.observe(viewLifecycleOwner) {
-            binding.tvCurrentWeather.text =
-                "${getString(R.string.weather_in_the_selected_lovation)}:\n" +
-                        "${it.textWeather}\n" +
-                        "${getString(R.string.feels_like)}: ${"%.0f".format(it.feelsLikeC.toFloat())} ${getString(R.string.celsius_degree)}\n" +
-                        "${getString(R.string.wind_speed)}: ${"%.0f".format(it.windKph.toFloat())} ${getString(R.string.kmh)}\n" +
-                        "${getString(R.string.gust)}: ${"%.0f".format(it.gustKph.toFloat())} ${getString(R.string.kmh)}\n" +
-                        "${getString(R.string.last_updated)}: ${it.lastUpdated}"
-
             binding.tvTemperature.text =
                 "%.0f".format(it.tempC.toFloat()) + " " + getString(R.string.celsius_degree)
+
+            binding.tvTextWeather.text = it.textWeather
+
+            binding.tvFeelsLike.text =
+                getString(R.string.feels_like) + " " + "%.0f".format(it.feelsLikeC.toFloat()) + " " + getString(R.string.celsius_degree)
+
+            binding.tvWindSpeed.text =
+                getString(R.string.wind_speed) + " " + "%.0f".format(it.windKph.toFloat()) + " " + getString(R.string.kmh)
+
+            binding.tvGust.text =
+                getString(R.string.gust) + " " + "%.0f".format(it.gustKph.toFloat()) + " " + getString(R.string.kmh)
+
+            binding.tvLastUpdated.text =
+                getString(R.string.last_updated) + " " + it.lastUpdated
 
             Glide.with(this).clear(binding.ivIconWeather)
 

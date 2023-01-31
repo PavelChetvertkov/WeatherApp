@@ -6,7 +6,6 @@
     <string name="find_city">Find city</string>
     <string name="my_location">My location</string>
     <string name="hire_me">Hire me</string>
-    <string name="weather_in_the_selected_lovation">Weather in the selected location</string>
     <string name="temperature">Temperature</string>
     <string name="feels_like">Feels like</string>
     <string name="wind_speed">Wind speed</string>
